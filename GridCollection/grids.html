@@ -15,12 +15,12 @@
   </style>
 </head>
 <body> </body>
-<script src="three.min.99.js"></script>
-<script src="OrbitControls.js"></script>
-<script src="THREEx.WindowResize.js"></script>
-<script src="THREEf.js"></script>
-<script src="THREEp.js"></script>
-<script src="THREEg.js"></script>	
+<script src="./three.min.99.js"></script>
+<script src="./OrbitControls.js"></script>
+<script src="./THREEx.WindowResize.js"></script>
+<script src="./THREEf.js"></script>
+<script src="./THREEp.js"></script>
+<script src="./THREEg.js"></script>	
 <script>
 'use strict'
 var scene = new THREE.Scene();
@@ -35,7 +35,7 @@ container.appendChild( renderer.domElement );
 THREEx.WindowResize( renderer, camera );
 var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-var uvTex = new THREE.TextureLoader().load( "sunflower.png" );	// free
+var uvTex = new THREE.TextureLoader().load( "./sunflower.png" );	// free
 var material = new THREE.MeshBasicMaterial( {  map: uvTex, side: THREE.DoubleSide} ); // not wireframe
 var wireMaterial = new THREE.MeshBasicMaterial( { map: uvTex, side: THREE.DoubleSide, wireframe: true } );
 

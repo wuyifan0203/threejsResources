@@ -14,11 +14,9 @@
 </head>
 <body> </body>
 
-<script src="../js/three.min.134.js"></script>
-<script src="../js/OrbitControls.134.js"></script>
-
-<script>
-
+<script type="module">
+import * as THREE from "../lib/three.module.r136.js";
+import { OrbitControls } from "../lib/OrbitControls.r136.js";
 // @author hofk
 
 const scene = new THREE.Scene();
@@ -31,7 +29,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setClearColor( 0xdedede, 1 );
 document.body.appendChild( renderer.domElement );
 
-const controls = new THREE.OrbitControls( camera, renderer.domElement );
+const controls = new OrbitControls( camera, renderer.domElement );
 
 const g = new THREE.BufferGeometry( );
 const r = 2;  // radius sphere === space cube diagonal
@@ -61,7 +59,7 @@ const basicMaterial = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe:
 const basicMesh = new THREE.Mesh( g, basicMaterial );
 scene.add( basicMesh )
 
-const uvMaterial = new THREE.MeshBasicMaterial( { map: texturLoader.load( 'uv_grid_opengl.jpg' ), side: THREE.FrontSide, wireframe: false } );
+const uvMaterial = new THREE.MeshBasicMaterial( { map: texturLoader.load( './uv_grid_opengl.jpg' ), side: THREE.FrontSide, wireframe: false } );
 const uvMesh = new THREE.Mesh( g, uvMaterial );
 uvMesh.position.x = 4;
 scene.add( uvMesh )
@@ -94,11 +92,11 @@ function CubeSphereGeometry( g, r, cs, v ) {
     const vertexCount = css * css + cs * cs;
     const faceCount = cs * cs * 4;
     
-    let a0, b0, c0, a1, b1, c1, le;
+    let a0, b0, c0, a1, b1, c1, le,b2,c2,b3,c3,b4,c4,a;
     
     const indices = new Uint32Array( faceCount * 3 * 6 );
     g.positions = new Float32Array( vertexCount * 3 * 6 );   
-    uvs = new Float32Array( vertexCount * 2 * 6 ); // uvs to positions
+    const uvs = new Float32Array( vertexCount * 2 * 6 ); // uvs to positions
     
     g.setIndex( new THREE.BufferAttribute( indices, 1 ) );
     g.setAttribute( 'position', new THREE.BufferAttribute( g.positions, 3 ).setUsage( THREE.DynamicDrawUsage) );
